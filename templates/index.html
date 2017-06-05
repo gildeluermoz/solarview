@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	    <title>Solaire Habrico</title>
+	    <link rel="stylesheet" href="static/css/main.css"/>
+	    <link rel="stylesheet" href="static/node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+	    <link rel="stylesheet" href="static/node_modules/bootstrap-slider/dist/css/bootstrap-slider.min.css"/>
+
+	    <script src="static/node_modules/vue/dist/vue.js"></script>
+	    <script src="static/node_modules/vue-resource/dist/vue-resource.min.js"></script>
+	    <script src="static/node_modules/bootstrap-slider/dist/bootstrap-slider.min.js"></script>
+	    <script src="static/app/solarApp.js"></script>
+	<head>
+
+	<body>
+		<div id="solar-app">
+			<div class="page-header">
+				<h1>HABRICO<small> Quelques kWh solaires</small></h1>
+				<input 
+	    			id="timeSlid" 
+	    			data-slider-id='timeSlider' 
+	    			type="text" 
+	    			:data-slider-min="firstTimeIndex" 
+	    			:data-slider-max="lastTimeIndex" 
+	    			data-slider-step="1" 
+	    			:data-slider-value="currentTimeIndex"
+	    		/> 
+			</div>
+			<div id="sidebar">
+				<!-- <div id="selectFile">
+				    <form class="form-horizontal">
+				      <fieldset>
+				          <label for="csvFileInput"> <strong>Fichier CSV:</strong>
+				          </label>
+				          <input type="file" id="csvFileInput" v-on:change="handleFiles()" accept=".csv">
+				      </fieldset>
+				    </form>   		
+		    	</div> -->
+		    	<div>
+		    		<h1>{{cTime}}</h1>
+		    		<h1><small>Le {{sDay}}/{{sMonth}}/{{sYear}}</small></h1>
+		    		<p>Production : {{productionKwh}} kW/h
+		    		<p>Corrigée : {{productionCorrKwh}} kW/h</p>
+		    	</div>
+
+		    	<div>
+		    		<select v-model="sMonth">
+					  	<option v-for="option in monthOptions" v-bind:value="option.value">
+						    {{ option.text }}
+						</option>
+					</select>
+		    	</div>
+		    	<div>
+		    		<select v-model="sDay">
+					  	<option disabled value="">Choisir un jour</option>
+					  	<option v-for="option in dayOptions">
+						    {{ option }}
+						</option>
+					</select>
+		    	</div>
+		    	<button type="button" class="btn btn-default" v-on:click="getData()">Go !</button>
+			</div>
+			<div id=content>
+				
+				<div id="dispositif">
+					<canvas id="maisonCanvas" width="300" height="450"></canvas>
+					<div id="T4" width="30" height="20">{{kAmbiance}}°C</div>
+					<div id="T5" width="30" height="20">{{kVeranda}}°C</div>
+					<canvas id="verandaCanvas" width="150" height="180"></canvas>
+					<canvas id="ballonCanvas" width="70" height="120"></canvas>
+					<div id="T1" width="30" height="20">{{kPanel}}°C</div>
+					<div id="T3" width="30" height="20">{{kBaloonUp}}°C</div>
+					<div id="T2" width="30" height="20">{{kBaloonDown}}°C</div>
+					<canvas id="capteurCanvas" width="75" height="150"></canvas>
+				</div>
+				
+		    </div>
+		</div>
+		
+	</body>
+</html>

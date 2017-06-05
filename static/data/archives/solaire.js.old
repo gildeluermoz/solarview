@@ -1,0 +1,101 @@
+//CONSTANTES PARAM 
+//Température haute maison
+var kAmbianceMax = 28;
+//Témpérature basse maison
+var kAmbianceMin = 7;
+//Température haute solaire
+var kSunMax = 110;
+//Témpérature basse solaire
+var kSunMin = -10;
+
+//SET VALUES
+var theDate = "2017-04-24"
+var theTime = "19:05:00"
+var kPanel = 5;//T1
+var kbaloonDown = 43;//T2
+var kbaloonUp = 73;//T3
+var kAmbiance = 19;//T4
+var kVeranda = 45;//T5
+
+//UTILS
+// todo
+
+var drawBallon = function(cold, hot){
+	var c = document.getElementById("ballonCanvas");
+	var ctx = c.getContext("2d");
+	// Calculate color
+	var r = 255/(kSunMax-kSunMin)*(cold-kSunMin)
+	var b = 255-r;
+	colorCold = "rgba("+r+",0,"+b+",1)";
+	r = 255/(kSunMax-kSunMin)*(hot-kSunMin)
+	b = 255-r;
+	colorHot = "rgba("+r+",0,"+b+",1)";
+	// Create gradient
+	var grd = ctx.createLinearGradient(0,0,0,100);
+	grd.addColorStop(0,colorHot);
+	grd.addColorStop(1,colorCold);
+	// Fill with gradient
+	ctx.fillStyle = grd;
+	ctx.fillRect(10,10,50,100);
+}
+var drawCapteur = function(t){
+	// Calculate color
+	var r = 255/(kSunMax-kSunMin)*(t-kSunMin)
+	var b = 255-r;
+	var color = "rgba("+r+",0,"+b+",1)";
+	var c = document.getElementById("capteurCanvas");
+	var ctx = c.getContext("2d");
+	ctx.strokeStyle = color;
+    ctx.lineWidth=10;
+	ctx.moveTo(0,0);
+	ctx.lineTo(75,150);
+	ctx.stroke();
+}
+var drawMaison = function(t){
+	// Calculate color
+	var r = 255/(kAmbianceMax-kAmbianceMin)*(t-kAmbianceMin)
+	var b = 255-r;
+	var color = "rgba("+r+",0,"+b+",1)";
+	//draw canvas
+	var c = document.getElementById("maisonCanvas");
+	var ctx = c.getContext("2d");
+	ctx.fillStyle = color;
+	ctx.fillRect(0,0,300,450);
+}
+var drawVeranda = function(t){
+	// Calculate color
+	var r = 255/(kAmbianceMax-kAmbianceMin)*(t-kAmbianceMin)
+	var b = 255-r;
+	color = "rgba("+r+",0,"+b+",1)";
+	//draw canvas
+	var c = document.getElementById("verandaCanvas");
+	var ctx = c.getContext("2d");
+	ctx.fillStyle = color;
+	ctx.fillRect(0,0,150,180);
+}
+var affectSondeValue = function(id,val){
+	var t = document.getElementById(id);
+	t.innerHTML = val+"°C";
+}
+
+var affectTime = function(id,val){
+	var t = document.getElementById(id);
+	t.innerHTML = val;
+}
+
+var init = function(){
+
+	affectTime("time",theTime);
+
+	drawBallon(kbaloonDown,kbaloonUp);
+	drawCapteur(kPanel);
+	drawVeranda(kVeranda);
+	drawMaison(kAmbiance);
+
+	affectSondeValue("T1",kPanel);
+	affectSondeValue("T2",kbaloonDown);
+	affectSondeValue("T3",kbaloonUp);
+	affectSondeValue("T4",kAmbiance);
+	affectSondeValue("T5",kVeranda);
+
+};
