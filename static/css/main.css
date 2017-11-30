@@ -40,6 +40,12 @@
 	border:1px solid #d3d3d3;	
 }
 
+#vmcCanvas{
+	position:absolute;
+	z-index: 0;
+	top:155px;
+	left:275px;	
+}
 
 #ballonCanvas{
 	position:absolute;
@@ -50,11 +56,33 @@
 	background-color: #ccc;
 }
 
+#ballonOutCanvas{
+	position:absolute;
+	z-index: 1;
+	top:230px;
+	left:235px;
+	border:1px solid #d3d3d3;
+}
+
 #capteurCanvas{ 
 	position:absolute;
 	z-index: 1;
 	top:300px;
 	left:452px;
+}
+
+#solarOutCanvas{ 
+	position:absolute;
+	z-index: 1;
+	top:332px;
+	left:260px;
+}
+
+#solarInCanvas{ 
+	position:absolute;
+	z-index: 1;
+	top:428px;
+	left:260px;
 }
 
 #T1{ 
@@ -90,5 +118,19 @@
 	z-index: 2;
 	left:350px; 
 	top:150px;
+}
+
+#T6{
+	position:absolute;
+	z-index: 2;
+	left:350px; 
+	top:410px;
+}
+
+#pCurrent{
+	position:absolute;
+	z-index: 2;
+	left:350px; 
+	top:430px;
 }
 
