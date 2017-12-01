@@ -1,0 +1,20 @@
+##############################
+###### SOLAIRE settings ######
+##############################
+
+app_name=solaire
+
+####################
+### Python settings
+####################
+
+venv_dir=venv
+python_path=/usr/bin/python3
+
+#####################
+### Gunicorn settings
+#####################
+
+gun_num_workers=4
+gun_host=0.0.0.0
+gun_port=9000

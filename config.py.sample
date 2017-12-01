@@ -3,7 +3,7 @@
 Fichier de configuration générale de l'application
 '''
 
-SQLALCHEMY_DATABASE_URI = "sqlite:////home/user/solarview/static/data/solar.db"
+SQLALCHEMY_DATABASE_URI = "sqlite:////home/user/solarview/static/data/regul/solar.db"
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
