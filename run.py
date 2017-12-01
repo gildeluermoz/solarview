@@ -29,8 +29,8 @@ def init_app():
     from app.index import routes
     app.register_blueprint(routes, url_prefix='/')
 
-    from app.api.regul import routes
-    app.register_blueprint(routes, url_prefix='/api/regul')
+    from app.api.regul import adresses
+    app.register_blueprint(adresses, url_prefix='/api/regul')
 
     return app
 

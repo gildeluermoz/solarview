@@ -5,11 +5,11 @@ from sqlalchemy import select, distinct
 from ..utils.utilssqlalchemy import json_resp, GenericTable, serializeQuery, serializeQueryOneResult
 from .models import DataRegul
 
-routes = Blueprint('regul', __name__)
+adresses = Blueprint('regul', __name__)
 db = SQLAlchemy()
 
 
-@routes.route('/getoneday/<int:yyyy>/<int:mm>/<int:dd>', methods=['GET'])
+@adresses.route('/getoneday/<int:yyyy>/<int:mm>/<int:dd>', methods=['GET'])
 @json_resp
 def get_one_day(yyyy, mm, dd):
     results = db.session.query(DataRegul).\
@@ -19,7 +19,7 @@ def get_one_day(yyyy, mm, dd):
     	all()
     return [data.as_dict() for data in results]
 
-# @routes.route('/getdays/<int:yyyy>/<int:mm>/<int:dd>/<int:duration>', methods=['GET'])
+# @adresses.route('/getdays/<int:yyyy>/<int:mm>/<int:dd>/<int:duration>', methods=['GET'])
 # @json_resp
 # def get_days(yyyy, mm, dd, duration):
 #     results = db.session.query(DataRegul).\
@@ -30,7 +30,7 @@ def get_one_day(yyyy, mm, dd):
 #     return [data.as_dict() for data in results]
 
 
-# @routes.route('/getdays/<int:startyear>/<int:startmonth>/<int:startday>/<int:endyear>/<int:endmonth>/<int:endday>', methods=['GET'])
+# @adresses.route('/getdays/<int:startyear>/<int:startmonth>/<int:startday>/<int:endyear>/<int:endmonth>/<int:endday>', methods=['GET'])
 # @json_resp
 # def get_days(startyear, startmonth, startday, endyear, endmonth, endday):
 # 	startid = select_first_id_by_date(startyear, startmonth, startday)

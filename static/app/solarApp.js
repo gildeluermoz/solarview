@@ -81,7 +81,7 @@ window.onload=function(){
 		},
 	  	methods:{
 	  		getData: function(){
-	  			this.$http.get('/api/regul/getoneday/'+this.sYear+'/'+this.sMonth+'/'+this.sDay).then(response => {
+	  			this.$http.get('api/regul/getoneday/'+this.sYear+'/'+this.sMonth+'/'+this.sDay).then(response => {
 			    	this.dataLines = response.body;
 			    	// this.calculateKwh();
 			    	this.updateCanvas(0);
