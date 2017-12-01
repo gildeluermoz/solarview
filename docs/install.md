@@ -51,7 +51,7 @@ Rajouter les informations suivantes entre les balises VirtualHost
     # Configuration de l'application solaire
     RewriteEngine  on
     RewriteRule    "solaire$"  "solaire/"  [R]
-    <Location /taxhub>
+    <Location /solaire>
         ProxyPass  http://127.0.0.1:9000/
         ProxyPassReverse  http://127.0.0.1:9000/
     </Location>
