@@ -81,6 +81,20 @@ window.onload=function(){
 			currentTimeIndex : 0
 		},
 	  	methods:{
+			tomorrow: function (curYear, curMonth, curDay) {
+				var currentDate = new Date(new Date(curYear, curMonth - 1, curDay).getTime() + 86400000);
+				this.sDay = currentDate.getDate();
+				this.sMonth = currentDate.getMonth() + 1;
+				this.sYear = currentDate.getFullYear();
+				this.getData();
+			},
+			yesterday: function (curYear, curMonth, curDay) {
+				var currentDate = new Date(new Date(curYear, curMonth - 1, curDay).getTime() - 86400000);
+				this.sDay = currentDate.getDate();
+				this.sMonth = currentDate.getMonth() + 1;
+				this.sYear = currentDate.getFullYear();
+				this.getData();
+			},
 			getYearsList: function () {
 				this.$http.get('api/regul/getyears/').then(response => {
 					this.yearOptions = response.body;

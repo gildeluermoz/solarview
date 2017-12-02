@@ -20,7 +20,7 @@
 		<div id="solar-app">
 			<div >
 				<h1>HABRICO<small> Quelques kWh solaires</small></h1>
-				<button type="button" class="btn btn-default">Hier</button>
+				<button type="button" class="btn btn-default" v-on:click="yesterday(sYear, sMonth, sDay)">Hier</button>
 				<input 
 	    			id="timeSlid" 
 	    			data-slider-id='timeSlider' 
@@ -30,7 +30,7 @@
 	    			data-slider-step="1" 
 	    			:data-slider-value="currentTimeIndex"
 				/>
-				<button type="button" class="btn btn-default">Demain</button>
+				<button type="button" class="btn btn-default" v-on:click="tomorrow(sYear, sMonth, sDay)">Demain</button>
 			</div>
 			<div id="sidebar">
 				<!-- <div id="selectFile">
