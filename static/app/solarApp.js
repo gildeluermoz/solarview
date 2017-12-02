@@ -59,16 +59,17 @@ window.onload=function(){
 				h1:17
 	    	},
 
+			yearOptions: [],
 	    	monthOptions: [
-		      { text: 'janvier', value: 01 },
-		      { text: 'février', value: 02 },
-		      { text: 'mars', value: 03 },
-		      { text: 'avril', value: 04 },
-		      { text: 'mai', value: 05 },
-		      { text: 'juin', value: 06 },
-		      { text: 'juillet', value: 07 },
-		      { text: 'août', value: 08 },
-		      { text: 'septembre', value: 09 },
+		      { text: 'janvier', value: 1 },
+		      { text: 'février', value: 2 },
+		      { text: 'mars', value: 3 },
+		      { text: 'avril', value: 4 },
+		      { text: 'mai', value: 5 },
+		      { text: 'juin', value: 6 },
+		      { text: 'juillet', value: 7 },
+		      { text: 'août', value: 8 },
+		      { text: 'septembre', value: 9 },
 		      { text: 'octobre', value: 10 },
 		      { text: 'novembre', value: 11 },
 		      { text: 'décembre', value: 12 }
@@ -80,15 +81,37 @@ window.onload=function(){
 			currentTimeIndex : 0
 		},
 	  	methods:{
-	  		getData: function(){
-	  			this.$http.get('api/regul/getoneday/'+this.sYear+'/'+this.sMonth+'/'+this.sDay).then(response => {
-			    	this.dataLines = response.body;
-			    	// this.calculateKwh();
-			    	this.updateCanvas(0);
-			  	}, response => {
-			    	alert('biiiiiiiiiiip! error !')
-			  	});
-	  		},
+			getYearsList: function () {
+				this.$http.get('api/regul/getyears/').then(response => {
+					this.yearOptions = response.body;
+				}, response => {
+					alert('biiiiiiiiiiip! error !')
+				});
+			},
+			getMonthsList: function () {
+				this.$http.get('api/regul/getmonths/').then(response => {
+					monthsList = response.body;
+					for (let m of this.monthOptions) {
+						if (!monthsList.includes(m.value)) {
+							this.monthOptions.splice(this.monthOptions.indexOf(m), 1);
+						}
+					}
+				}, response => {
+					alert('biiiiiiiiiiip! error !')
+				});
+			},
+			getData: function(){
+				// this.getMonthsList();
+				this.$http.get('api/regul/getoneday/'+this.sYear+'/'+this.sMonth+'/'+this.sDay).then(response => {
+					this.dataLines = response.body;
+					// this.calculateKwh();
+					
+					this.updateCanvas(0);
+				}, response => {
+					alert('biiiiiiiiiiip! error !')
+				});
+			},
+			
 	  		drawBallon: function(cold, hot){
 				var ba = document.getElementById("ballonCanvas");
 				var ctx = ba.getContext("2d");
@@ -303,6 +326,8 @@ window.onload=function(){
 				// this.speedSlider();
 				this.timeSlider();
 				this.getData();
+				this.getMonthsList();
+				this.getYearsList();
 			}
 	  	}
 	});

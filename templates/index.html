@@ -18,8 +18,9 @@
 
 	<body>
 		<div id="solar-app">
-			<div class="page-header">
+			<div >
 				<h1>HABRICO<small> Quelques kWh solaires</small></h1>
+				<button type="button" class="btn btn-default">Hier</button>
 				<input 
 	    			id="timeSlid" 
 	    			data-slider-id='timeSlider' 
@@ -28,7 +29,8 @@
 	    			:data-slider-max="lastTimeIndex" 
 	    			data-slider-step="1" 
 	    			:data-slider-value="currentTimeIndex"
-	    		/> 
+				/>
+				<button type="button" class="btn btn-default">Demain</button>
 			</div>
 			<div id="sidebar">
 				<!-- <div id="selectFile">
@@ -48,7 +50,14 @@
 		    		<p>Corrigée : {{productionCorrKwh}} kWh</p> -->
 		    	</div>
 
-		    	<div>
+				<div>
+					<select v-model="sYear">
+						<option v-for="option in yearOptions" v-bind:value="option">
+							{{ option }}
+						</option>
+					</select>
+				</div>
+				<div>
 		    		<select v-model="sMonth">
 					  	<option v-for="option in monthOptions" v-bind:value="option.value">
 						    {{ option.text }}

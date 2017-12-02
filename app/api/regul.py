@@ -19,6 +19,18 @@ def get_one_day(yyyy, mm, dd):
     	all()
     return [data.as_dict() for data in results]
 
+@adresses.route('/getmonths/', methods=['GET'])
+@json_resp
+def get_months():
+    results = db.session.query(DataRegul.cmonth).distinct().all()
+    return [data[0] for data in results]
+
+@adresses.route('/getyears/', methods=['GET'])
+@json_resp
+def get_years():
+    results = db.session.query(DataRegul.cyear).distinct().all()
+    return [data[0] for data in results]
+
 # @adresses.route('/getdays/<int:yyyy>/<int:mm>/<int:dd>/<int:duration>', methods=['GET'])
 # @json_resp
 # def get_days(yyyy, mm, dd, duration):
