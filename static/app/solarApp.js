@@ -41,6 +41,7 @@ window.onload=function(){
 			
 
 			dataLines:[],//prepared datas from databases
+			dayStats:[],//prepared day statistics from databases
 
 			//CSV column index config
 			sourceindex:{
@@ -115,15 +116,17 @@ window.onload=function(){
 				});
 			},
 			getData: function(){
-				// this.getMonthsList();
 				this.$http.get('api/regul/getoneday/'+this.sYear+'/'+this.sMonth+'/'+this.sDay).then(response => {
-					this.dataLines = response.body;
-					// this.calculateKwh();
-					
-					this.updateCanvas(0);
+					this.dataLines = response.body;					
 				}, response => {
 					alert('biiiiiiiiiiip! error !')
 				});
+				this.$http.get('api/regul/getdaystats/' + this.sYear + '/' + this.sMonth + '/' + this.sDay).then(response => {
+					this.dayStats = response.body;
+				}, response => {
+					alert('biiiiiiiiiiip! error !')
+				});
+				this.updateCanvas(0);
 			},
 			
 	  		drawBallon: function(cold, hot){
@@ -270,8 +273,11 @@ window.onload=function(){
 
 		    updateCanvas: function(index) {		    	         	
 		      	if(this.dataLines.length>0){
-		      		var line = this.dataLines[index];
-	              	this.sYear = line.cyear;
+					var line = this.dataLines[index];
+					var stats = this.dayStats;
+					this.minMaison = stats.minMaison;
+					this.maxMaison = stats.maxMaison;
+					this.sYear = line.cyear;
 	              	this.sMonth = line.cmonth;
 	              	this.sDay = line.cday;
 	              	this.cTime = line.ctime;
