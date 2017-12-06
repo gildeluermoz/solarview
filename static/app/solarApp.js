@@ -37,7 +37,7 @@ window.onload=function(){
 			showBallonOut:true,//pilote l'affichage de la circulation radiateur
 			showSolarFlow:true,//pilote l'affichage de la circulation solaire
 			
-			//csv:null,//CSV source file
+			appSlider:{},
 			
 
 			dataLines:[],//prepared datas from databases
@@ -117,7 +117,9 @@ window.onload=function(){
 			},
 			getData: function(){
 				this.$http.get('api/regul/getoneday/'+this.sYear+'/'+this.sMonth+'/'+this.sDay).then(response => {
-					this.dataLines = response.body;					
+					this.dataLines = response.body;	
+					this.appSlider.setValue(0);
+					this.updateCanvas(0);				
 				}, response => {
 					alert('biiiiiiiiiiip! error !')
 				});
@@ -126,17 +128,16 @@ window.onload=function(){
 				}, response => {
 					alert('biiiiiiiiiiip! error !')
 				});
-				this.updateCanvas(0);
 			},
 			
 	  		drawBallon: function(cold, hot){
 				var ba = document.getElementById("ballonCanvas");
 				var ctx = ba.getContext("2d");
 				// Calculate color
-				var r = 255/(this.const.kSunMax-this.const.kSunMin)*(cold-this.const.kSunMin)
+				var r = Math.round(255/(this.const.kSunMax-this.const.kSunMin)*(cold-this.const.kSunMin));
 				var b = 255-r;
 				colorCold = "rgba("+r+",0,"+b+",1)";
-				r = 255/(this.const.kSunMax-this.const.kSunMin)*(hot-this.const.kSunMin)
+				r = Math.round(255/(this.const.kSunMax-this.const.kSunMin)*(hot-this.const.kSunMin));
 				b = 255-r;
 				colorHot = "rgba("+r+",0,"+b+",1)";
 				// Create gradient
@@ -262,12 +263,11 @@ window.onload=function(){
 
 			timeSlider: function(){ 
 		    	self = this;
-				var slid = new Slider('#timeSlid', {
+				self.appSlider = new Slider('#timeSlid', {
 					tooltip:'hide'
 				});
-				slid.on("slide", function(sliderValue) {
+				self.appSlider.on("slide", function(sliderValue) {
 					self.updateCanvas(sliderValue);
-					// self.calculateKwh(sliderValue);
 				});
 			},
 
