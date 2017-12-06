@@ -39,9 +39,15 @@ window.onload=function(){
 			
 			appSlider:{},
 			
-
 			dataLines:[],//prepared datas from databases
 			dayStats:[],//prepared day statistics from databases
+
+			minMaison:0,
+			maxMaison:0,
+			minVeranda:0,
+			maxVeranda:0,
+			minCapteur:0,
+			maxCapteur:0,
 
 			//CSV column index config
 			sourceindex:{
@@ -277,6 +283,10 @@ window.onload=function(){
 					var stats = this.dayStats;
 					this.minMaison = stats.minMaison;
 					this.maxMaison = stats.maxMaison;
+					this.minVeranda = stats.minVeranda;
+					this.maxVeranda = stats.maxVeranda;
+					this.minCapteur = stats.minCapteur;
+					this.maxCapteur = stats.maxCapteur;
 					this.sYear = line.cyear;
 	              	this.sMonth = line.cmonth;
 	              	this.sDay = line.cday;

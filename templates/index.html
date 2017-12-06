@@ -79,13 +79,15 @@
 				
 				<div id="dispositif">
 					<canvas id="maisonCanvas" width="300" height="450"></canvas>
-					<div id="T4" width="30" height="20"><small>{{minMaison}}°C - </small><b>{{kAmbiance}}°C</b><small> - {{maxMaison}}°C</small></div>
+					<div id="statsMaison" width="30" height="20"><small>min {{minMaison}}°C - max {{maxMaison}}°C</small></div>
+					<div id="T4" width="30" height="20">{{kAmbiance}}°C</b></div>
 					<div id="T5" width="30" height="20">{{kVeranda}}°C</div>
+					<div id="statsVeranda" width="30" height="20"><small>min {{minVeranda}}°C - max {{maxVeranda}}°C</small></div>
 					<canvas id="verandaCanvas" width="150" height="180"></canvas>
 					<canvas id="vmcCanvas" width="50" height="15"></canvas>
 					<canvas id="ballonCanvas" width="70" height="120"></canvas>
 					<canvas id="ballonOutCanvas" width="8" height="100"></canvas>
-					<div id="T1" width="30" height="20">{{kPanel}}°C</div>
+					<div id="T1" width="30" height="20">{{kPanel}}°C<small> - min {{minCapteur}}°C - max {{maxCapteur}}°C</small></div>
 					<div id="T6" width="30" height="20">{{kGlycolOut}}°C</div>
 					<div id="T3" width="30" height="20">{{kBaloonUp}}°C</div>
 					<div id="T2" width="30" height="20">{{kBaloonDown}}°C</div>

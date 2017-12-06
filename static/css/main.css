@@ -91,6 +91,7 @@
 	z-index: 2;
 	top:310px;
 	left:480px;
+	width:150px
 }
 
 #T2{
@@ -110,8 +111,15 @@
 #T4{
 	position:absolute;
 	z-index: 2;
-	left:100px; 
+	left:150px; 
 	top:200px;
+}
+
+#statsMaison{
+	position:absolute;
+	z-index: 2;
+	left:50px; 
+	top:50px;
 }
 
 #T5{
@@ -119,6 +127,14 @@
 	z-index: 2;
 	left:350px; 
 	top:150px;
+}
+
+#statsVeranda{
+	position:absolute;
+	z-index: 2;
+	left:320px; 
+	top:280px;
+	width:150px; 
 }
 
 #T6{
