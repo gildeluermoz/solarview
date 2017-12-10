@@ -33,15 +33,6 @@
 				<button type="button" class="btn btn-default" v-on:click="tomorrow(sYear, sMonth, sDay)">Demain</button>
 			</div>
 			<div id="sidebar">
-				<!-- <div id="selectFile">
-				    <form class="form-horizontal">
-				      <fieldset>
-				          <label for="csvFileInput"> <strong>Fichier CSV:</strong>
-				          </label>
-				          <input type="file" id="csvFileInput" v-on:change="handleFiles()" accept=".csv">
-				      </fieldset>
-				    </form>   		
-		    	</div> -->
 		    	<div>
 		    		<h1>{{cTime}}</h1>
 		    		<h1><small>Le {{sDay}}/{{sMonth}}/{{sYear}}</small></h1>
@@ -66,7 +57,7 @@
 		    	</div>
 		    	<div>
 		    		<select v-model="sDay">
-					  	<option disabled value="">Choisir un jour</option>
+					  	<option disabled value=""></option>
 					  	<option v-for="option in dayOptions">
 						    {{ option }}
 						</option>
@@ -79,7 +70,7 @@
 				
 				<div id="dispositif">
 					<canvas id="maisonCanvas" width="300" height="450"></canvas>
-					<div id="statsMaison" width="30" height="20"><small>min {{minMaison}}°C - max {{maxMaison}}°C</small></div>
+					<div id="statsMaison" width="30" height="20"><small>min {{minMaison}}°C - moy {{moyMaison}}°C - max {{maxMaison}}°C</small></div>
 					<div id="T4" width="30" height="20">{{kAmbiance}}°C</b></div>
 					<div id="T5" width="30" height="20">{{kVeranda}}°C</div>
 					<div id="statsVeranda" width="30" height="20"><small>min {{minVeranda}}°C - max {{maxVeranda}}°C</small></div>

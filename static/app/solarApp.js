@@ -44,6 +44,7 @@ window.onload=function(){
 
 			minMaison:0,
 			maxMaison:0,
+			moyMaison:0,
 			minVeranda:0,
 			maxVeranda:0,
 			minCapteur:0,
@@ -160,7 +161,7 @@ window.onload=function(){
 				if (this.hydroPump > 0) { bao.style.display = 'block'; }
 				else { bao.style.display = 'none'; }
 				// Calculate color
-				r = 255 / (this.const.kSunMax - this.const.kSunMin) * (t - this.const.kSunMin)
+				r = Math.round(255 / (this.const.kSunMax - this.const.kSunMin) * (t - this.const.kSunMin));
 				b = 255 - r;
 				var color = "rgba(" + r + ",0," + b + ",1)";
 				var ctx = bao.getContext("2d");
@@ -173,7 +174,7 @@ window.onload=function(){
 
 			drawCapteur: function(t){
 				// Calculate color
-				var r = 255/(this.const.kSunMax-this.const.kSunMin)*(t-this.const.kSunMin)
+				var r = Math.round(255/(this.const.kSunMax-this.const.kSunMin)*(t-this.const.kSunMin));
 				var b = 255-r;
 				var color = "rgba("+r+",0,"+b+",1)";
 				var panel = document.getElementById("capteurCanvas");
@@ -187,7 +188,7 @@ window.onload=function(){
 
 			drawMaison: function(t){
 				// Calculate color
-				var r = 255/(this.const.kAmbianceMax-this.const.kAmbianceMin)*(t-this.const.kAmbianceMin)
+				var r = Math.round(255/(this.const.kAmbianceMax-this.const.kAmbianceMin)*(t-this.const.kAmbianceMin));
 				var b = 255-r;
 				var color = "rgba("+r+",0,"+b+",1)";
 				//draw canvas
@@ -199,7 +200,7 @@ window.onload=function(){
 
 			drawVeranda: function(t){
 				// Calculate color
-				var r = 255/(this.const.kAmbianceMax-this.const.kAmbianceMin)*(t-this.const.kAmbianceMin)
+				var r = Math.round(255/(this.const.kAmbianceMax-this.const.kAmbianceMin)*(t-this.const.kAmbianceMin));
 				var b = 255-r;
 				color = "rgba("+r+",0,"+b+",1)";
 				//draw canvas
@@ -214,7 +215,7 @@ window.onload=function(){
 				if (this.vmc > 0) { vm.style.display = 'block';}
 				else { vm.style.display = 'none' ;}
 				// Calculate color
-				var r = 255 / (this.const.kAmbianceMax - this.const.kAmbianceMin) * (t - this.const.kAmbianceMin)
+				var r = Math.round(255/(this.const.kAmbianceMax - this.const.kAmbianceMin) * (t - this.const.kAmbianceMin));
 				var b = 255 - r;
 				var color = "rgba(" + r + ",0," + b + ",1)";
 				var ctx = vm.getContext("2d");
@@ -240,7 +241,7 @@ window.onload=function(){
 					s.style.display = 'none' ;
 				}
 				// Calculate color
-				var r = 255 / (this.const.kSunMax - this.const.kSunMin) * (t - this.const.kSunMin)
+				var r = Math.round(255/(this.const.kSunMax - this.const.kSunMin) * (t - this.const.kSunMin));
 				var b = 255 - r;
 				var color = "rgba(" + r + ",0," + b + ",1)";
 				var ctx = so.getContext("2d");
@@ -256,7 +257,7 @@ window.onload=function(){
 				if (this.solarPump > 0) { si.style.display = 'block';}
 				else { si.style.display = 'none';}
 				// Calculate color
-				var r = 255 / (this.const.kSunMax - this.const.kSunMin) * (t - this.const.kSunMin)
+				var r = Math.round(255/(this.const.kSunMax - this.const.kSunMin) * (t - this.const.kSunMin));
 				var b = 255 - r;
 				var color = "rgba(" + r + ",0," + b + ",1)";
 				var ctx = si.getContext("2d");
@@ -283,6 +284,7 @@ window.onload=function(){
 					var stats = this.dayStats;
 					this.minMaison = stats.minMaison;
 					this.maxMaison = stats.maxMaison;
+					this.moyMaison = Math.round(stats.moyMaison*10)/10;
 					this.minVeranda = stats.minVeranda;
 					this.maxVeranda = stats.maxVeranda;
 					this.minCapteur = stats.minCapteur;
@@ -353,7 +355,6 @@ window.onload=function(){
 				this.drawMaison(this.kAmbiance);
 				this.drawSolarOut(this.kPanel);
 				this.drawSolarIn(this.kGlycolOut);
-				// this.speedSlider();
 				this.timeSlider();
 				this.getData();
 				this.getMonthsList();

@@ -46,12 +46,13 @@ def get_day_stats(yyyy, mm, dd):
         func.max(DataRegul.qday).label('production'), 
         func.min(DataRegul.t4).label('minMaison'),
         func.max(DataRegul.t4).label('maxMaison'),
+        func.avg(DataRegul.t4).label('moyMaison'),
         func.min(DataRegul.t5).label('minVeranda'),
         func.max(DataRegul.t5).label('maxVeranda'),
-        func.min(DataRegul.t2).label('minHautBallon'),
-        func.max(DataRegul.t2).label('maxHautBallon'),
-		func.min(DataRegul.t3).label('minBasBallon'),
-        func.max(DataRegul.t3).label('maxBasBallon'),
+        func.min(DataRegul.t2).label('minBasBallon'),
+        func.max(DataRegul.t2).label('maxBasBallon'),
+		func.min(DataRegul.t3).label('minHautBallon'),
+        func.max(DataRegul.t3).label('maxHautBallon'),
         func.min(DataRegul.t1).label('minCapteur'),
         func.max(DataRegul.t1).label('maxCapteur')
 	)\
