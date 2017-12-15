@@ -27,6 +27,8 @@ window.onload=function(){
 			kAmbiance : 19,//T4
 			kVeranda : 20,//T5
 			kGlycolOut : 10,//T6
+			kExt : 0, //température extérieure
+			meteoTime : 0, //température extérieure
 			pCurrent : 0, //puissance instantanée
 			cadence:100,//vitesse de rafraichissement
 			// productionKwh:0,
@@ -41,6 +43,8 @@ window.onload=function(){
 			
 			dataLines:[],//prepared datas from databases
 			dayStats:[],//prepared day statistics from databases
+			dayMeteo:[],//prepared day meteo values from databases
+			dayMeteoStats:[],//prepared meteo stats for the day from databases
 
 			minMaison:0,
 			maxMaison:0,
@@ -49,6 +53,12 @@ window.onload=function(){
 			maxVeranda:0,
 			minCapteur:0,
 			maxCapteur:0,
+				minExt:0,
+				maxExt:0,
+				moyExt:0,
+				minDelta:0,
+				maxDelta:0,
+				moyDelta:0,
 
 			//CSV column index config
 			sourceindex:{
@@ -123,15 +133,38 @@ window.onload=function(){
 				});
 			},
 			getData: function(){
-				this.$http.get('api/regul/getoneday/'+this.sYear+'/'+this.sMonth+'/'+this.sDay).then(response => {
-					this.dataLines = response.body;	
+				this.$http.get('api/regul/getoneday/' + this.sYear + '/' + this.sMonth + '/' + this.sDay).then(response => {
+					this.dataLines = response.body;
 					this.appSlider.setValue(0);
-					this.updateCanvas(0);				
-				}, response => {
-					alert('biiiiiiiiiiip! error !')
-				});
-				this.$http.get('api/regul/getdaystats/' + this.sYear + '/' + this.sMonth + '/' + this.sDay).then(response => {
-					this.dayStats = response.body;
+					this.$http.get('api/regul/getdaystats/' + this.sYear + '/' + this.sMonth + '/' + this.sDay).then(response => {
+						this.dayStats = response.body;
+						//température min, max, moyennes des sondes
+						this.minMaison = this.dayStats.minMaison;
+						this.maxMaison = this.dayStats.maxMaison;
+						this.moyMaison = Math.round(this.dayStats.moyMaison * 10) / 10;
+						this.minVeranda = this.dayStats.minVeranda;
+						this.maxVeranda = this.dayStats.maxVeranda;
+						this.minCapteur = this.dayStats.minCapteur;
+						this.maxCapteur = this.dayStats.maxCapteur;
+					}, response => {
+						alert('biiiiiiiiiiip! error !')
+					});
+					this.$http.get('api/meteo/getoneday/' + this.sYear + '/' + this.sMonth + '/' + this.sDay).then(response => {
+						this.dayMeteo = response.body;
+					}, response => {
+						alert('biiiiiiiiiiip! error !')
+					});	
+					this.$http.get('api/meteo/getdaystats/' + this.sYear + '/' + this.sMonth + '/' + this.sDay).then(response => {
+						this.dayMeteoStats = response.body;
+						this.minExt = Math.round(this.dayMeteoStats.minExt * 10) / 10;
+						this.maxExt = Math.round(this.dayMeteoStats.maxExt * 10) / 10;
+						this.moyExt = Math.round(this.dayMeteoStats.moyExt * 10) / 10;
+						this.moyDelta = Math.round((this.moyMaison - this.moyExt) * 10) / 10;
+						this.updateCanvas(0);
+					}, response => {
+						alert('biiiiiiiiiiip! error !')
+					});
+						
 				}, response => {
 					alert('biiiiiiiiiiip! error !')
 				});
@@ -281,14 +314,8 @@ window.onload=function(){
 		    updateCanvas: function(index) {		    	         	
 		      	if(this.dataLines.length>0){
 					var line = this.dataLines[index];
-					var stats = this.dayStats;
-					this.minMaison = stats.minMaison;
-					this.maxMaison = stats.maxMaison;
-					this.moyMaison = Math.round(stats.moyMaison*10)/10;
-					this.minVeranda = stats.minVeranda;
-					this.maxVeranda = stats.maxVeranda;
-					this.minCapteur = stats.minCapteur;
-					this.maxCapteur = stats.maxCapteur;
+					var meteo = this.dayMeteo;
+					//température des sondes
 					this.sYear = line.cyear;
 	              	this.sMonth = line.cmonth;
 	              	this.sDay = line.cday;
@@ -305,6 +332,14 @@ window.onload=function(){
 					this.solarPump = line.h1;//pompe solaire
 					this.hydroPump = line.r2;//circulateur radiateurs
 					this.vmc = line.r3;//circulateur radiateurs
+					for (let m of meteo) {
+						if (m.ctime >= (parseInt(line.ctime.slice(0,2))-2)){
+							this.kExt = Math.round(m.t * 10)/10;
+							this.meteoTime = m.ctime;
+							break;
+						}
+					}
+					this.currentDelta = Math.round((this.kAmbiance - this.kExt) * 10) / 10;
 	              	// this.productionKwh = line.prod;
 					// this.productionCorrKwh = line.prodCorr;
 	              	this.drawBallon(this.kBaloonDown,this.kBaloonUp);

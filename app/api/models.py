@@ -30,3 +30,13 @@ class DataRegul(serializableModel, db.Model):
     r3  = db.Column(db.Integer)
     h1  = db.Column(db.Integer)
     h2  = db.Column(db.Integer)
+
+
+class DataMeteo(serializableModel, db.Model):
+    __tablename__ = 'data_meteo'
+    id = db.Column(db.Integer, primary_key=True)
+    cyear  = db.Column(db.Integer)
+    cmonth  = db.Column(db.Integer)
+    cday  = db.Column(db.Integer)
+    ctime = db.Column(db.Integer)
+    t  = db.Column(db.Float)

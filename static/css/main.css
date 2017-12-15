@@ -115,11 +115,27 @@
 	top:200px;
 }
 
+#currentDeltaMaison{
+	position:absolute;
+	color :#fff;
+	z-index: 2;
+	left:120px; 
+	top:230px;
+}
+
 #statsMaison{
 	position:absolute;
 	z-index: 2;
 	left:50px; 
 	top:50px;
+}
+
+#deltaMoyenMaison{
+	position:absolute;
+	color :#fff;
+	z-index: 2;
+	left:50px; 
+	top:80px;
 }
 
 #T5{
@@ -149,5 +165,21 @@
 	z-index: 2;
 	left:350px; 
 	top:430px;
+}
+
+#kExt{
+	position:absolute;
+	z-index: 2;
+	left:400px; 
+	top:50px;
+	width:150px;
+}
+
+#statsExt{
+	position:absolute;
+	z-index: 2;
+	left:400px; 
+	top:80px;
+	width:250px;
 }
 

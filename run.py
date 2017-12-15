@@ -32,6 +32,9 @@ def init_app():
     from app.api.regul import adresses
     app.register_blueprint(adresses, url_prefix='/api/regul')
 
+    from app.api.meteo import adresses
+    app.register_blueprint(adresses, url_prefix='/api/meteo')
+
     return app
 
 app = init_app()
