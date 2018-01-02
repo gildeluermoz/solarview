@@ -98,7 +98,7 @@ var appDatas = {
         lastTimeIndex: 1440,
         currentTimeIndex: 0 
     },
-    
+
     methods: {
         getYearsList: function () {
             this.$http.get('api/regul/getyears/').then(response => {
@@ -149,6 +149,7 @@ var appDatas = {
                     this.maxExt = Math.round(this.dayMeteoStats.maxExt * 10) / 10;
                     this.moyExt = Math.round(this.dayMeteoStats.moyExt * 10) / 10;
                     this.moyDelta = Math.round((this.moyMaison - this.moyExt) * 10) / 10;
+                    // when all datas are recieved : update template's values
                     this.updateCanvas(0);
                 }, response => {
                     alert('biiiiiiiiiiip! error !')
