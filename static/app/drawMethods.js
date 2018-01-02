@@ -1,3 +1,4 @@
+// this functions drawn the canvas representation of the instalation
 var drawFunctions = {
     methods: {
         drawBallon: function(cold, hot) {
@@ -129,6 +130,48 @@ var drawFunctions = {
             ctx.moveTo(0, 0);
             ctx.lineTo(270, 0);
             ctx.stroke();
+        },
+
+        updateCanvas: function (index) {
+            if (this.dataLines.length > 0) {
+                var line = this.dataLines[index];
+                var meteo = this.dayMeteo;
+                //température des sondes
+                this.sYear = line.cyear;
+                this.sMonth = line.cmonth;
+                this.sDay = line.cday;
+                this.cTime = line.ctime;
+                this.kPanel = line.t1;
+                this.kBaloonDown = line.t2;
+                this.kBaloonUp = line.t3;
+                this.kAmbiance = line.t4;
+                this.kVeranda = line.t5;
+                this.kGlycolOut = line.t6;
+                this.pCurrent = line.pcurrent;//puissance instantanée
+                this.qDay = line.qday;//Cumul production
+                this.qYear = line.qyear;//Cumul production
+                this.solarPump = line.h1;//pompe solaire
+                this.hydroPump = line.r2;//circulateur radiateurs
+                this.vmc = line.r3;//circulateur radiateurs
+                for (let m of meteo) {
+                    if (m.ctime >= (parseInt(line.ctime.slice(0, 2)) - 2)) {
+                        this.kExt = Math.round(m.t * 10) / 10;
+                        this.meteoTime = m.ctime;
+                        break;
+                    }
+                }
+                this.currentDelta = Math.round((this.kAmbiance - this.kExt) * 10) / 10;
+                // this.productionKwh = line.prod;
+                // this.productionCorrKwh = line.prodCorr;
+                this.drawBallon(this.kBaloonDown, this.kBaloonUp);
+                this.drawBallonOut(this.kBaloonUp);
+                this.drawCapteur(this.kPanel);
+                this.drawVeranda(this.kVeranda);
+                this.drawVmc(this.kVeranda);
+                this.drawMaison(this.kAmbiance);
+                this.drawSolarOut(this.kPanel);
+                this.drawSolarIn(this.kGlycolOut);
+            }
         }
     }
 };
