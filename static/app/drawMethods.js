@@ -30,9 +30,18 @@ var drawFunctions = {
             var color = "rgba(" + r + ",0," + b + ",1)";
             var ctx = bao.getContext("2d");
             ctx.strokeStyle = color;
-            ctx.lineWidth = 15;
-            ctx.moveTo(0, 0);
-            ctx.lineTo(0, 100);
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(60, 5);
+            ctx.lineTo(60, 50);
+            ctx.lineTo(5, 50);
+            ctx.lineTo(5, 85);
+            ctx.moveTo(55, 5);
+            ctx.lineTo(55, 50);
+            ctx.moveTo(50, 5);
+            ctx.lineTo(50, 50);
+            ctx.moveTo(60, 10);
+            ctx.lineTo(50, 10);
             ctx.stroke();
         },
 

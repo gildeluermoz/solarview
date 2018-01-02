@@ -60,9 +60,8 @@
 #ballonOutCanvas{
 	position:absolute;
 	z-index: 1;
-	top:230px;
-	left:235px;
-	border:1px solid #d3d3d3;
+	top:250px;
+	left:230px;
 }
 
 #capteurCanvas{ 
