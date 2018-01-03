@@ -22,7 +22,7 @@
 	<body>
 		<div id="solar-app">
 			<div >
-				<h1>HABRICO<small> Quelques kWh solaires</small></h1>
+				<h1>HABRICO<small> Quelques kWh solaires : {{qYear}}kWh</small></h1>
 				<button type="button" class="btn btn-default" v-on:click="yesterday(sYear, sMonth, sDay)">Hier</button>
 				<input 
 	    			id="timeSlid" 
@@ -39,9 +39,6 @@
 		    	<div>
 		    		<h1>{{cTime}}</h1>
 		    		<h1><small>Le {{sDay}}/{{sMonth}}/{{sYear}}</small></h1>
-		    		<p>Production du jour : {{qDay}} kWh
-		    		<!-- <p>Production : {{productionKwh}} kWh
-		    		<p>Corrigée : {{productionCorrKwh}} kWh</p> -->
 		    	</div>
 
 				<div>
@@ -67,7 +64,6 @@
 					</select>
 		    	</div>
 		    	<button type="button" class="btn btn-default" v-on:click="getData()">Go !</button>
-				<h3>Cumul : {{qYear}}kWh</h3>
 			</div>
 			<div id=content>
 				
@@ -97,6 +93,7 @@
 					<div id="T3">{{kBaloonUp}}°C</div>
 					<div id="T2">{{kBaloonDown}}°C</div>
 					<div id="pCurrent">{{pCurrent}}kW</div>
+					<div id="qday">Production du jour : {{qDay}} kWh</div>
 					<canvas id="capteurCanvas" width="75" height="150"></canvas>
 					<canvas id="solarOutCanvas" width="250" height="15"></canvas>
 					<canvas id="solarInCanvas" width="250" height="15"></canvas>

@@ -171,6 +171,14 @@
 	width:150px; 
 }
 
+#qday{
+	position:absolute;
+	z-index: 2;
+	color :#fff;
+	left:20px; 
+	top:370px;
+}
+
 #T6{
 	position:absolute;
 	z-index: 2;
@@ -182,7 +190,7 @@
 	position:absolute;
 	z-index: 2;
 	left:350px; 
-	top:430px;
+	top:320px;
 }
 
 #kExt{
