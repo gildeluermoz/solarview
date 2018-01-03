@@ -5,10 +5,10 @@ var drawFunctions = {
             var ba = document.getElementById("ballonCanvas");
             var ctx = ba.getContext("2d");
             // Calculate color
-            var r = Math.round(255 / (this.const.kBaloonMax - this.const.kBaloonMin) * (cold - this.const.kBaloonMin));
+            var r = Math.round(255 / (this.const.kSunMax - this.const.kSunMin) * (cold - this.const.kSunMin));
             var b = 255 - r;
             colorCold = "rgba(" + r + ",0," + b + ",1)";
-            r = Math.round(255 / (this.const.kBaloonMax - this.const.kBaloonMin) * (hot - this.const.kBaloonMin));
+            r = Math.round(255 / (this.const.kSunMax - this.const.kSunMin) * (hot - this.const.kSunMin));
             b = 255 - r;
             colorHot = "rgba(" + r + ",0," + b + ",1)";
             // Create gradient
