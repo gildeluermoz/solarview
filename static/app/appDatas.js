@@ -2,14 +2,18 @@ var appDatas = {
     data: {
         //constantes
         const: {
-            //Température haute maison
+            //Température haute de la maison
             kAmbianceMax: 30,
-            //Témpérature basse maison
+            //Température basse de la maison
             kAmbianceMin: 5,
-            //Température haute solaire
+            //Température haute du capteur solaire
             kSunMax: 95,
-            //Témpérature basse solaire
-            kSunMin: 0
+            //Température basse du capteur solaire
+            kSunMin: 0,
+            //Température haute de l'eau du circuit radiateur et ballon tampon
+            kBaloonMax: 60,
+            //Température basse de l'eau du circuit radiateur et ballon tampon
+            kBaloonMin: 5
         },
 
         //SET INITIALES VALUES

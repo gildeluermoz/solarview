@@ -61,7 +61,7 @@
 	position:absolute;
 	z-index: 1;
 	top:250px;
-	left:230px;
+	left:10px;
 }
 
 #capteurCanvas{ 
@@ -88,13 +88,24 @@
 #T1{ 
 	position:absolute;
 	z-index: 2;
+	font-weight: bold;
 	top:310px;
+	left:480px;
+	width:150px
+}
+
+#statsCapteur{ 
+	position:absolute;
+	z-index: 2;
+	top:330px;
 	left:480px;
 	width:150px
 }
 
 #T2{
 	position:absolute;
+	color :#fff;
+	font-weight: bold;
 	z-index: 2;
 	left:217px; 
 	top:410px;	
@@ -102,6 +113,8 @@
 
 #T3{
 	position:absolute;
+	color :#fff;
+	font-weight: bold;
 	z-index: 2;
 	left:217px; 
 	top:340px;	
@@ -109,46 +122,52 @@
 
 #T4{
 	position:absolute;
-	z-index: 2;
-	left:150px; 
-	top:200px;
-}
-
-#currentDeltaMaison{
-	position:absolute;
 	color :#fff;
+	font-weight: bold;
 	z-index: 2;
-	left:120px; 
-	top:230px;
+	left:140px; 
+	top:200px;
 }
 
 #statsMaison{
 	position:absolute;
+	color :#fff;
 	z-index: 2;
-	left:50px; 
-	top:50px;
+	left:60px; 
+	top:220px;
+}
+
+#currentDeltaMaison{
+	position:absolute;
+	color :#0f0;;
+	z-index: 2;
+	left:110px; 
+	top:30px;
 }
 
 #deltaMoyenMaison{
 	position:absolute;
-	color :#fff;
+	color :#0f0;
 	z-index: 2;
-	left:50px; 
-	top:80px;
+	left:120px; 
+	top:50px;
 }
 
 #T5{
 	position:absolute;
+	color :#fff;
+	font-weight: bold;
 	z-index: 2;
-	left:350px; 
+	left:360px; 
 	top:150px;
 }
 
 #statsVeranda{
 	position:absolute;
+	color :#fff;
 	z-index: 2;
 	left:320px; 
-	top:280px;
+	top:170px;
 	width:150px; 
 }
 
@@ -168,6 +187,8 @@
 
 #kExt{
 	position:absolute;
+	color :#00f;
+	font-weight: bold;
 	z-index: 2;
 	left:400px; 
 	top:50px;
@@ -176,9 +197,10 @@
 
 #statsExt{
 	position:absolute;
+	color :#00f;
 	z-index: 2;
 	left:400px; 
-	top:80px;
+	top:70px;
 	width:250px;
 }
 

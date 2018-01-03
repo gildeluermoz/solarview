@@ -5,10 +5,10 @@ var drawFunctions = {
             var ba = document.getElementById("ballonCanvas");
             var ctx = ba.getContext("2d");
             // Calculate color
-            var r = Math.round(255 / (this.const.kSunMax - this.const.kSunMin) * (cold - this.const.kSunMin));
+            var r = Math.round(255 / (this.const.kBaloonMax - this.const.kBaloonMin) * (cold - this.const.kBaloonMin));
             var b = 255 - r;
             colorCold = "rgba(" + r + ",0," + b + ",1)";
-            r = Math.round(255 / (this.const.kSunMax - this.const.kSunMin) * (hot - this.const.kSunMin));
+            r = Math.round(255 / (this.const.kBaloonMax - this.const.kBaloonMin) * (hot - this.const.kBaloonMin));
             b = 255 - r;
             colorHot = "rgba(" + r + ",0," + b + ",1)";
             // Create gradient
@@ -25,23 +25,32 @@ var drawFunctions = {
             if (this.hydroPump > 0) { bao.style.display = 'block'; }
             else { bao.style.display = 'none'; }
             // Calculate color
-            r = Math.round(255 / (this.const.kSunMax - this.const.kSunMin) * (t - this.const.kSunMin));
+            r = Math.round(255 / (this.const.kBaloonMax - this.const.kBaloonMin) * (t - this.const.kBaloonMin));
             b = 255 - r;
             var color = "rgba(" + r + ",0," + b + ",1)";
             var ctx = bao.getContext("2d");
             ctx.strokeStyle = color;
             ctx.lineWidth = 3;
             ctx.beginPath();
-            ctx.moveTo(60, 5);
-            ctx.lineTo(60, 50);
-            ctx.lineTo(5, 50);
-            ctx.lineTo(5, 85);
-            ctx.moveTo(55, 5);
-            ctx.lineTo(55, 50);
-            ctx.moveTo(50, 5);
-            ctx.lineTo(50, 50);
-            ctx.moveTo(60, 10);
-            ctx.lineTo(50, 10);
+            ctx.moveTo(2, 5);
+            ctx.lineTo(2, 50);
+            ctx.moveTo(7, 5);
+            ctx.lineTo(7, 50);
+            ctx.moveTo(12, 5);
+            ctx.lineTo(12, 50);
+            ctx.moveTo(2, 10);
+            ctx.lineTo(12, 10);
+            ctx.moveTo(280, 5);
+            ctx.lineTo(280, 50);
+            ctx.lineTo(0, 50);
+            ctx.moveTo(225, 50);
+            ctx.lineTo(225, 85);
+            ctx.moveTo(275, 5);
+            ctx.lineTo(275, 50);
+            ctx.moveTo(270, 5);
+            ctx.lineTo(270, 50);
+            ctx.moveTo(280, 10);
+            ctx.lineTo(270, 10);
             ctx.stroke();
         },
 
