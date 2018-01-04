@@ -16,6 +16,19 @@ var appDatas = {
             kBaloonMin: 5
         },
 
+        lambda:{
+            roof: 8,
+            northWall: 59,
+            eastWall: 39,
+            westUpWall: 10,
+            westDownWall: 7,
+            southDownWall: 15,
+            southUpWall: 19,
+            flor: 16,
+            windows: 40,
+            airRenew: 20
+        },
+
         //SET INITIALES VALUES
         kPanel: 0,//T1
         kBaloonDown: 0,//T2
@@ -23,8 +36,9 @@ var appDatas = {
         kAmbiance: 0,//T4
         kVeranda: 0,//T5
         kGlycolOut: 0,//T6
+        kCellar: 5, //température de la cave
         kExt: 0, //température extérieure
-        meteoTime: 0, //température extérieure
+        meteoTime: 0, //heure de la données météo
         pCurrent: 0, //puissance instantanée
         qDay: 0, //production du jour
         qYear: 0, // production totale
@@ -44,6 +58,7 @@ var appDatas = {
         maxDelta: 0,
         moyDelta: 0,
         
+        currentHeatLoss:0,
 
         showBallonOut: true, //pilote l'affichage de la circulation radiateur
         showSolarFlow: true, //pilote l'affichage de la circulation solaire

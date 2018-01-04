@@ -14,6 +14,7 @@
 	    <script src="static/node_modules/vue-resource/dist/vue-resource.min.js"></script>
 	    <script src="static/node_modules/bootstrap-slider/dist/bootstrap-slider.min.js"></script>
 		<script src="static/app/appDatas.js"></script>
+		<script src="static/app/calculateMethods.js"></script>
 		<script src="static/app/drawMethods.js"></script>
 		<script src="static/app/actionsMethods.js"></script>
 		<script src="static/app/solarApp.js"></script>
@@ -69,14 +70,15 @@
 				
 				<div id="dispositif">
 					<canvas id="maisonCanvas" width="300" height="450"></canvas>
-					<div id="statsMaison">
-						<small>min {{minMaison}}°C - moy {{moyMaison}}°C - max {{maxMaison}}°C</small>
-					</div>
+					<div id="currentDeltaMaison">Delta {{currentDelta}}°C</b></div>
+					<div id="currentHeatLoss">Pertes {{currentHeatLoss}}kWh</b></div>
 					<div id="deltaMoyenMaison">
 						<small>moy {{moyDelta}}°C</small>
 					</div>
 					<div id="T4">{{kAmbiance}}°C</b></div>
-					<div id="currentDeltaMaison">Delta {{currentDelta}}°C</b></div>
+					<div id="statsMaison">
+						<small>min {{minMaison}}°C - moy {{moyMaison}}°C - max {{maxMaison}}°C</small>
+					</div>
 					<div id="T5">{{kVeranda}}°C</div>
 					<div id="statsVeranda" width="30" height="20">
 						<small>min {{minVeranda}}°C - max {{maxVeranda}}°C</small>

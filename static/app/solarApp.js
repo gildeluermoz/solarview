@@ -2,7 +2,7 @@ window.onload=function(){
 
 	var solarApp = new Vue({
 	  	el: '#solar-app',
-		mixins: [appDatas, drawFunctions, actionsMethods],
+		mixins: [appDatas, calculateMethods, drawFunctions, actionsMethods],
 	  	methods:{
 			init: function(){
 				this.drawBallon(this.kBaloonDown,this.kBaloonUp);

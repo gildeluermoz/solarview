@@ -139,7 +139,8 @@
 
 #currentDeltaMaison{
 	position:absolute;
-	color :#0f0;;
+	color :#0f0;
+	font-weight: bold;
 	z-index: 2;
 	left:110px; 
 	top:30px;
@@ -151,6 +152,14 @@
 	z-index: 2;
 	left:120px; 
 	top:50px;
+}
+
+#currentHeatLoss{
+	position:absolute;
+	color :#0f0;
+	z-index: 2;
+	left:110px; 
+	top:90px;
 }
 
 #T5{
