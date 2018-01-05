@@ -58,7 +58,15 @@ var appDatas = {
         maxDelta: 0,
         moyDelta: 0,
         
-        currentHeatLoss:0,
+        //calcul des pertes et des besoins thermiques
+        currentHeatLoss: 0, //pertes thermiques instantanées constatées
+        currentHeatNeeded: 0, //besoin d'apoint pour la température de consigne
+        consigneSlider: {}, //consigne Slider object
+        kAmbianceNeeded: 20, //température de consigne (slider)
+        kAmbianceNeededMin: 5, //température de consigne mini (slider)
+        kAmbianceNeededMax: 30, //température de consigne maxi (slider)
+        qDayNeeded: 0, // pertes thermiques totales
+        qDayApoint : 0, //besoins d'appoint
 
         showBallonOut: true, //pilote l'affichage de la circulation radiateur
         showSolarFlow: true, //pilote l'affichage de la circulation solaire
@@ -109,7 +117,7 @@ var appDatas = {
         sDay: 30,
         cTime: "00:00",
 
-        //Slider object
+        //time Slider object
         appSlider: {},
 
         // slider index values

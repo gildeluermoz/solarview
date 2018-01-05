@@ -14,6 +14,7 @@ window.onload=function(){
 				this.drawSolarOut(this.kPanel);
 				this.drawSolarIn(this.kGlycolOut);
 				this.timeSlider();
+				this.kSlider();
 				this.getData();
 				this.getMonthsList();
 				this.getYearsList();

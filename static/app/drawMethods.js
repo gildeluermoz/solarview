@@ -180,6 +180,8 @@ var drawFunctions = {
                 }
                 this.currentDelta = Math.round((this.kAmbiance - this.kExt) * 10) / 10;
                 this.currentHeatLoss = this.getCurrentHeatLoss(this.kAmbiance, this.kVeranda, this.kExt);
+                this.currentHeatNeeded = this.getCurrentHeatNeeded(this.kAmbiance, this.kVeranda, this.kExt);
+                
                 this.drawBallon(this.kBaloonDown, this.kBaloonUp);
                 this.drawBallonOut(this.kBaloonUp);
                 this.drawCapteur(this.kPanel);

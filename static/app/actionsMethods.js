@@ -1,6 +1,6 @@
 var actionsMethods = {
     methods: {
-        // slider constructor and actions 
+        // time slider constructor and actions 
         timeSlider: function () {
             // slider constructor
             self = this;
@@ -9,7 +9,26 @@ var actionsMethods = {
             });
             //action when slider slide
             self.appSlider.on("slide", function (sliderValue) {
+                self.currentTimeIndex = sliderValue;
                 self.updateCanvas(sliderValue);
+            });
+        },
+
+        // consigne slider constructor and actions 
+        kSlider: function () {
+            // slider constructor
+            self = this;
+            self.consigneSlider = new Slider('#kSlid', {
+                tooltip: 'show'
+            });
+            //action when slider slide
+            self.consigneSlider.on("slide", function (sliderValue) {
+                let index = 0;
+                if (self.currentTimeIndex >= 0) { index = self.currentTimeIndex; }
+                self.kAmbianceNeeded = sliderValue;
+                self.qDayNeeded = self.getQDayNeeded();
+                self.qDayApoint = self.getQDayApoint();
+                self.updateCanvas(index);
             });
         },
         
@@ -42,6 +61,8 @@ var actionsMethods = {
                     this.maxExt = Math.round(this.dayMeteoStats.maxExt * 10) / 10;
                     this.moyExt = Math.round(this.dayMeteoStats.moyExt * 10) / 10;
                     this.moyDelta = Math.round((this.moyMaison - this.moyExt) * 10) / 10;
+                    this.qDayNeeded = this.getQDayNeeded();
+                    this.qDayApoint = this.getQDayApoint();
                     // when all datas are recieved : update template's values
                     this.updateCanvas(0);
                 }, response => {

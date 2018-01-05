@@ -22,7 +22,7 @@
 
 	<body>
 		<div id="solar-app">
-			<div >
+			<div>
 				<h1>HABRICO<small> Quelques kWh solaires : {{qYear}}kWh</small></h1>
 				<button type="button" class="btn btn-default" v-on:click="yesterday(sYear, sMonth, sDay)">Hier</button>
 				<input 
@@ -65,13 +65,21 @@
 					</select>
 		    	</div>
 		    	<button type="button" class="btn btn-default" v-on:click="getData()">Go !</button>
+			<div>
+				<div id="consigne">consigne : {{kAmbianceNeeded}}</div>
+				<input id="kSlid" data-slider-id='kSlider' type="text" :data-slider-min="kAmbianceNeededMin" :data-slider-max="kAmbianceNeededMax"
+				 data-slider-step="1" :data-slider-value="kAmbianceNeeded" />
 			</div>
+			
+			</div>
+			
 			<div id=content>
 				
 				<div id="dispositif">
 					<canvas id="maisonCanvas" width="300" height="450"></canvas>
 					<div id="currentDeltaMaison">Delta {{currentDelta}}°C</b></div>
 					<div id="currentHeatLoss">Pertes {{currentHeatLoss}}kWh</b></div>
+					<div id="currentHeatNeeded">Besoins {{currentHeatNeeded}}kWh</b></div>
 					<div id="deltaMoyenMaison">
 						<small>moy {{moyDelta}}°C</small>
 					</div>
@@ -95,7 +103,9 @@
 					<div id="T3">{{kBaloonUp}}°C</div>
 					<div id="T2">{{kBaloonDown}}°C</div>
 					<div id="pCurrent"> <-- {{pCurrent}}kW</div>
-					<div id="qday">Production du jour : {{qDay}} kWh</div>
+					<div id="qday">Production solaire : {{qDay}} kWh</div>
+					<div id="qDayNeeded">Besoin total : {{qDayNeeded}} kWh</div>
+					<div id="qDayApoint">Besoin d'apoint : {{qDayApoint}} kWh</div>
 					<canvas id="capteurCanvas" width="75" height="150"></canvas>
 					<canvas id="solarOutCanvas" width="250" height="15"></canvas>
 					<canvas id="solarInCanvas" width="250" height="15"></canvas>

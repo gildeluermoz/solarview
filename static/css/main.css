@@ -4,6 +4,16 @@
 	margin:10px 0 0 10px;
 }
 
+#kSlider{
+	left:0%;
+	width:80%;
+	margin:10px 0 0 10px;
+}
+
+#consigne{
+	margin-top:50px;
+}
+
 
 #sidebar{
 	float:left;
@@ -11,16 +21,6 @@
 	width:20%;
 	min-height: 500px;
 	text-align:center;
-}
-
-#selectFile{
-	top:30px;
-	z-index: 0;
-	position:relative;
-}
-
-#speedSlid .slider-selection {
-	background: #BABABA;
 }
 
 #content{
@@ -162,6 +162,14 @@
 	top:90px;
 }
 
+#currentHeatNeeded{
+	position:absolute;
+	color :#0f0;
+	z-index: 2;
+	left:110px; 
+	top:110px;
+}
+
 #T5{
 	position:absolute;
 	color :#fff;
@@ -186,6 +194,22 @@
 	color :#fff;
 	left:20px; 
 	top:370px; 
+}
+
+#qDayNeeded{
+	position:absolute;
+	z-index: 2;
+	color :#0f0;
+	left:20px; 
+	top:390px; 
+}
+
+#qDayApoint{
+	position:absolute;
+	z-index: 2;
+	color :#0f0;
+	left:20px; 
+	top:410px; 
 }
 
 #T6{
