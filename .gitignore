@@ -1,10 +1,9 @@
 *.pyc
 venv
 static/data/archive
-static/data/regul/solar.db
+static/data/solar.db
 static/node_modules
-static/data/regul/17/
-static/data/regul/18/
+static/data/regul/
 static/data/meteofrance/*.csv
 config.py
 settings.ini

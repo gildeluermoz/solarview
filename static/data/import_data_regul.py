@@ -3,8 +3,8 @@
 
 '''
     Create the application database from a year directory
-    usage : ./import_data.py dbname.db "/the/path/of//csvdata/directory/"
-    for instance : ./import_data.py solar.db "/home/gil/solaire/static/data/regul/17/"
+    usage : ./import_data.py dbname.db "/the/path/of/csvdata/directory/"
+    for instance : ./import_data_regul.py "/home/gil/solaire/static/data/solar.db" "/home/gil/solaire/static/data/regul/"
 '''
 
 import sqlite3
@@ -20,11 +20,8 @@ try:
 except OSError:
     pass
 
-#path to parse
+#path to parse. Must contain only subpathes and csv files
 mypath = sys.argv[2]
-
-# db = "/home/gil/solaire/static/data/solartest.db"
-# mypath = "/home/gil/solaire/static/data/regul/17/"
 
 conn = sqlite3.connect(db)
 conn.text_factory = str  # allows utf-8 data to be stored

@@ -4,7 +4,7 @@
 '''
     add meteo values to application database from meteo france csv files
     usage : ./import_data.py dbname.db "/the/path/of//csvdata/directory/"
-    for instance : ./import_data.py "/home/gil/solaire/static/data/regul/solar.db" "/home/gil/solaire/static/data/meteofrance/"
+    for instance : ./import_data_mf.py "/home/gil/solaire/static/data/solar.db" "/home/gil/solaire/static/data/meteofrance/"
 '''
 
 import sqlite3
